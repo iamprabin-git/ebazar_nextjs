@@ -4,7 +4,7 @@ import ProductDetail from "@/components/products/ProductsDetails";
 
 export default async function ProductByIdPage({ params }) {
   try {
-    const response = await getProductById(params.ProductId);
+    const response = await getProductById((await params).productId);
     const product = response.data;
 
     return <ProductDetail product={product} />;
