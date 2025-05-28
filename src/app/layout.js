@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
         <AppProvider>
           <MainLayout>
             <Header />
-            {children}
+            { children }
            
           </MainLayout>
         </AppProvider>
