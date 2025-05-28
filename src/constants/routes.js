@@ -1,0 +1,22 @@
+export const LOGIN_ROUTE = "/login";
+export const REGISTER_ROUTE = "/register";
+export const PRODUCT_MANAGEMENT_ROUTE = "/product-management";
+export const USER_MANAGEMENT_ROUTE = "/user-management";
+export const DASHBOARD_ROUTE = "/dashboard";
+export const HOME_ROUTE = "/";
+export const PRODUCT_ADD_ROUTE = "/product-management/add";
+export const PRODUCT_EDIT_ROUTE = "/product-management/:id/edit";
+
+export const PRODUCTS_ROUTE = "/products";
+export const BUY_ROUTE = "/buy";
+export const RENT_ROUTE = "/rent";
+export const LAND_ROUTE = "/land";
+export const SELL_ROUTE = "/sell";
+export const ABOUT_ROUTE = "/about";
+export const CONTACT_ROUTE = "/contact";
+export const CAREERS_ROUTE = "/careers";
+export const BLOG_ROUTE = "/blog";
+
+export const CART_ROUTE = "/cart";
+export const NEWS_ROUTE = "/news";
+
