@@ -27,7 +27,7 @@ const navLinks = [
   {
     route: CART_ROUTE,
     label: "Cart",
-    isAuth: true,
+    isAuth: false,
   },
  
 ];
