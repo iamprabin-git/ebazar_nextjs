@@ -4,6 +4,7 @@ import card from "../../assets/images/product-card.jpg";
 import Link from "next/link";
 import AddToCart from "./AddToCart";
 
+
 function ProductCard({ product }) {
   return (
     <div className="w-full h-max rounded-2xl shadow-blue-600 dark:shadow dark:shadow-amber-50 px-5 py-4 border border-b-amber-950 ">

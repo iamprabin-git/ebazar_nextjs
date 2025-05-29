@@ -1,12 +1,13 @@
 "use client";
 
+import { addToCart } from "@/redux/cart/cartSlice";
 import { useDispatch } from "react-redux";
 
 function AddToCart({ product }) {
     const dispatch = useDispatch();
 
     function addProductToCart() {
-        dispatch(AddToCart(product));
+        dispatch(addToCart(product));
     }
 
     return (
