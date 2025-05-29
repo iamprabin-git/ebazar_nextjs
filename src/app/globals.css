@@ -38,3 +38,13 @@ body {
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Light mode */
+body {
+  @apply bg-white text-black;
+}
+
+/* Dark mode */
+.dark body {
+  @apply bg-[#1e293b] text-white;
+}

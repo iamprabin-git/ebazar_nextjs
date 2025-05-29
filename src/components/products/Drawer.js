@@ -179,14 +179,14 @@ function ProductDrawer({
         <div className="flex items-center justify-between gap-1">
           <button
             onClick={setFilters}
-            className="px-2 py-2 bg-slate-900 text-white items-center border rounded-lg hover:opacity-80 dark:bg-amber-100"
+            className="px-2 py-2 bg-slate-900 text-white items-center border rounded-lg hover:opacity-80 dark:bg-amber-100 dark:text-slate-700"
           >
             Apply Filter
           </button>
 
           <button
             onClick={resetFilters}
-            className="px-2 py-2 bg-red-800 text-white items-center border rounded-lg hover:opacity-80 dark:bg-amber-100"
+            className="px-2 py-2 bg-red-800 text-white items-center border rounded-lg hover:opacity-80 dark:bg-gray-100 dark:text-red-700"
           >
             Reset Filter
           </button>

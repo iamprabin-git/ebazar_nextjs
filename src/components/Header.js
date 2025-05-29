@@ -32,7 +32,7 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-50">
-      <nav className="bg-white border-gray-200 dark:bg-slate-900 dark:text-white">
+      <nav className="bg-white border-gray-200 dark:bg-slate-700 dark:text-white">
         <div className="max-w-screen-xl shadow-lg flex flex-wrap items-center justify-between mx-auto p-4">
           {/* Logo */}
           <Link
@@ -113,7 +113,7 @@ function Header() {
             }`}
             id="navbar-cta"
           >
-            <ul className="flex flex-col space-y-3 md:space-y-0 md:flex-row md:space-x-6 font-medium p-4 md:p-0 mt-4 md:mt-0 border border-gray-100 md:border-0 rounded-lg bg-gray-50 md:bg-white dark:bg-gray-800 md:dark:bg-slate-900 dark:border-gray-700 dark:text-white">
+            <ul className="flex flex-col space-y-3 md:space-y-0 md:flex-row md:space-x-6 font-medium p-4 md:p-0 mt-4 md:mt-0 rounded-lg bg-white dark:bg-slate-700  dark:text-white">
               {navLinks.map(
                 (navLink, i) =>
                   (user || !navLink.isAuth) && (
