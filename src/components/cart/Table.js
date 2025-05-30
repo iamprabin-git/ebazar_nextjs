@@ -1,13 +1,24 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
-import { decreaseQuantity, increaseQuantity } from "@/redux/cart/cartSlice";
+import { decreaseQuantity, increaseQuantity, removeFromCart } from "@/redux/cart/cartSlice";
+import { GrSettingsOption } from "react-icons/gr";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import Link from "next/link";
+import RemoveFromCartModal from "./Modal";
 
 function CartTable({products}) {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
  
   const dispatch = useDispatch();
+
+  function removeFromCart(product) {
+    setShowModal(true);
+    setSelectedProduct(product);
+  }
 
   
   return (
@@ -28,7 +39,10 @@ function CartTable({products}) {
               Price
             </th>
             <th scope="col" className="px-6 py-3">
-              Action
+              Total price
+            </th>
+            <th scope="col" className="px-6 py-3">
+              < GrSettingsOption className="h-5 w-5"/>
             </th>
           </tr>
         </thead>
@@ -66,20 +80,25 @@ function CartTable({products}) {
                 </div>
               </td>
               <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                Rs.{product.price}
+                Rs. {product.price}
+              </td>
+              <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                Rs. {product.price * product.quantity}
               </td>
               <td className="px-6 py-4">
-                <a
-                  href="#"
-                  className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                <button
+               onClick={() => removeFromCart(product)}
+                  className="flex gap-2 items-center border rounded-lg px-3 py-1 font-medium text-red-600 dark:text-red-500 hover:bg-green-700 hover:text-white cursor-pointer"
                 >
-                  Remove
-                </a>
+                  Remove 
+                  <RiDeleteBin5Line className="h-6 w-6 "/>
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <RemoveFromCartModal showModal={showModal} setShowModal={setShowModal} product={selectedProduct}/>
     </div>
   );
 }

@@ -11,9 +11,9 @@ function CartPage() {
       {products.length>0 ? (
         <>
       <CartTable products={products}/>
-      <div className='flex justify-end border-t border-b py-2'>
-        <span className='font-semibold'>Total Price:</span>
-        <h4>{totalPrice}</h4>
+      <div className='flex justify-start border-t border-b py-2 '>
+        <span className='font-semibold pr-5 pl-65' >Total Price:</span>
+        <h4 className='pl-115'>Rs. {totalPrice}</h4>
       </div></>
       ): (<div className="text-center text-2xl text-red-600 ">Cart is empty</div>)}
       

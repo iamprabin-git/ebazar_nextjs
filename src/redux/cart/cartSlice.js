@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -15,41 +14,46 @@ const cartSlice = createSlice({
       const existingProduct = state.products.find(
         (item) => item.id === product.id
       );
-      if(existingProduct) {
-        // update quantity
-        existingProduct.quantity++;
-      }else {
-        //   add product to cart
 
-        state.products=[...state.products, {...product, quantity: 1}];
+      if (existingProduct) {
+        existingProduct.quantity++;
+      } else {
+        state.products.push({ ...product, quantity: 1 });
       }
-      
-    state.totalPrice = state.products.reduce((total, item) => {
-        total= item.price + state.totalPrice;
-        return total;
+
+      // Correct total price calculation
+      state.totalPrice = state.products.reduce((total, item) => {
+        return total + item.price * item.quantity;
       }, 0);
     },
-    removeFromCart: (state, action) => {},
+
+    removeFromCart: (state, action) => {
+      const product = action.payload;
+      state.products = state.products.filter((item) => item.id !== product.id);
+
+      // Recalculate totalPrice
+      state.totalPrice = state.products.reduce((total, item) => {
+        return total + item.price * item.quantity;
+      }, 0);
+    },
+
     increaseQuantity: (state, action) => {
       const product = action.payload;
-      state.products= state.products.map((item) => {
-        if (item.id === product.id) {
-          return { ...item, quantity: item.quantity + 1 };
-        }
-        return item;
-      });
-      state.totalPrice =state.totalPrice + product.price;
+      const existingProduct = state.products.find((item) => item.id === product.id);
+      if (existingProduct) {
+        existingProduct.quantity++;
+        state.totalPrice += product.price;
+      }
     },
+
     decreaseQuantity: (state, action) => {
       const product = action.payload;
-      if(product.quantity <= 1) return;
-      state.products= state.products.map((item) => {
-        if (item.id === product.id) {
-          return { ...item, quantity: item.quantity - 1 };
-        }
-        return item;
-      });
-      state.totalPrice =state.totalPrice - product.price;
+      const existingProduct = state.products.find((item) => item.id === product.id);
+
+      if (existingProduct && existingProduct.quantity > 1) {
+        existingProduct.quantity--;
+        state.totalPrice -= product.price;
+      }
     },
   },
 });
