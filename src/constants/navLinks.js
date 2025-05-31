@@ -24,11 +24,6 @@ const navLinks = [
     label: "Contact",
     isAuth: false,
   },
-  {
-    route: CART_ROUTE,
-    label: "Cart",
-    isAuth: false,
-  },
  
 ];
 export default navLinks;

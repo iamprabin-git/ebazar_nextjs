@@ -12,11 +12,14 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import { toggleTheme } from "@/redux/userPreference/userPreferenceSlice";
 import AuthUser from "./AuthUser";
 import { DARK_THEME } from "@/constants/theme";
-import { HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from "@/constants/routes";
+import { CART_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from "@/constants/routes";
+import { GiShoppingCart } from "react-icons/gi";
 
 function Header() {
   const { user } = useSelector((state) => state.auth);
   const { theme } = useSelector((state) => state.userPreference);
+  const { products } = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -53,6 +56,7 @@ function Header() {
 
           {/* Auth + Theme + Toggle */}
           <div className="flex gap-4 items-center md:order-2">
+           
             <button
               onClick={() => dispatch(toggleTheme())}
               className="p-2 text-xl rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
@@ -60,6 +64,15 @@ function Header() {
             >
               {theme === DARK_THEME ? <FaSun /> : <FaMoon />}
             </button>
+             <div className="relative flex items-center justify-center p-2 text-xl rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+            <Link
+              href={CART_ROUTE}
+            >
+              <GiShoppingCart className="h-10 w-10" />
+            </Link>
+            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-white rounded-full top-0 right-0">{products.length}</div>
+
+            </div>
 
             {!user ? (
               <>
