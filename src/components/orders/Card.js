@@ -23,7 +23,7 @@ function OrderCard({ order }) {
     <div className="bg-gray-100 p-4 border rounded-lg my-2 dark:bg-gray-800 ">
       <div className="flex items-center justify-between mb-2">
         <h2 className="text-lg font-semibold"># {order.orderNumber}</h2>
-      <span className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300 uppercase">{order.status}</span>
+      <span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300 uppercase">{order.status}</span>
 
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -31,6 +31,7 @@ function OrderCard({ order }) {
           <OrderItemCard key={index} product={item.product} quantity={item.quantity}/>
         ))}
       </div>
+      <h4 className="mt-2 font-semibold">Total Price: Rs. {order.totalPrice}</h4>
     </div>
   );
 }

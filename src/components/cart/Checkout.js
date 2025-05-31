@@ -1,14 +1,15 @@
 import { createOrder } from "@/api/orders";
 import { clearCart } from "@/redux/cart/cartSlice";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
-
 function Checkout({ products, totalPrice }) {
   const [loading, setLoading] = useState(false);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   function checkoutOrder() {
     createOrder({
@@ -18,12 +19,19 @@ function Checkout({ products, totalPrice }) {
       })),
       totalPrice,
     })
-    .then(()=>{
+      .then(() => {
         dispatch(clearCart());
-        toast.success("Order placed successfully!", { autoClose: 750 });
-    })
-    .catch((error) => toast.error(error.response?.data?.message || "Failed to place order", { autoClose: 1000 }))
-    .finally(() => setLoading(false));
+        toast.success("Order placed successfully!", {
+          autoClose: 750,
+          onClose: () => router.push("/orders"),
+        });
+      })
+      .catch((error) =>
+        toast.error(error.response?.data?.message || "Failed to place order", {
+          autoClose: 1000,
+        })
+      )
+      .finally(() => setLoading(false));
   }
   return (
     <div className="flex items-center justify-between ">
