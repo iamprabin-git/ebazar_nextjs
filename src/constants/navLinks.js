@@ -1,4 +1,4 @@
-import {  CART_ROUTE,  CONTACT_ROUTE, HOME_ROUTE, NEWS_ROUTE,  PRODUCTS_ROUTE,  PROPERTIES_ROUTEPRODUCTS } from "./routes";
+import {CONTACT_ROUTE, HOME_ROUTE, NEWS_ROUTE,  ORDERS_ROUTE,  PRODUCTS_ROUTE,} from "./routes";
 
 const navLinks = [
   {
@@ -17,7 +17,11 @@ const navLinks = [
     label: "News",
     isAuth: true,
   },
-  
+  {
+    route: ORDERS_ROUTE,
+    label: "Orders",
+    isAuth: true,
+  },
  
   {
     route: CONTACT_ROUTE,

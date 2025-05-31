@@ -1,18 +1,29 @@
 import { createOrder } from "@/api/orders";
-import React from "react";
-import { useSelector } from "react-redux";
+import { clearCart } from "@/redux/cart/cartSlice";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
-function Checkout() {
-  const { totalPrice } = useSelector((state) => state.cart);
+
+function Checkout({ products, totalPrice }) {
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch()
 
   function checkoutOrder() {
     createOrder({
-      orderItems: Products.map((item) => ({
-        id: item.id,
+      orderItems: products.map((item) => ({
+        product: item.id,
         quantity: item.quantity,
       })),
       totalPrice,
-    });
+    })
+    .then(()=>{
+        dispatch(clearCart());
+        toast.success("Order placed successfully!", { autoClose: 750 });
+    })
+    .catch((error) => toast.error(error.response?.data?.message || "Failed to place order", { autoClose: 1000 }))
+    .finally(() => setLoading(false));
   }
   return (
     <div className="flex items-center justify-between ">

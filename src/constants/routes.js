@@ -6,7 +6,7 @@ export const DASHBOARD_ROUTE = "/dashboard";
 export const HOME_ROUTE = "/";
 export const PRODUCT_ADD_ROUTE = "/product-management/add";
 export const PRODUCT_EDIT_ROUTE = "/product-management/:id/edit";
-
+export const ORDERS_MANAGEMENT_ROUTE = "/orders-management";
 export const PRODUCTS_ROUTE = "/products";
 export const BUY_ROUTE = "/buy";
 export const RENT_ROUTE = "/rent";
@@ -16,7 +16,7 @@ export const ABOUT_ROUTE = "/about";
 export const CONTACT_ROUTE = "/contact";
 export const CAREERS_ROUTE = "/careers";
 export const BLOG_ROUTE = "/blog";
-
+export const ORDERS_ROUTE = "/orders";
 export const CART_ROUTE = "/cart";
 export const NEWS_ROUTE = "/news";
 

@@ -5,14 +5,14 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 
 function CartPage() {
-   const { products } = useSelector((state) => state.cart);
+   const { products, totalPrice } = useSelector((state) => state.cart);
   return (
     <section className='container mx-auto'>
       <h1 className='text-2xl font-bold items-center'>Your Cart Items</h1>
       {products.length>0 ? (
         <>
       <CartTable products={products}/>
-      <Checkout/>
+      <Checkout products={products} totalPrice={totalPrice}/>
       </>
       
       ): (<div className="text-center text-2xl text-red-600 ">Cart is empty</div>)}

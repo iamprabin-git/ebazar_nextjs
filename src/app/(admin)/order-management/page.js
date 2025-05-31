@@ -1,12 +1,21 @@
-import React from 'react'
+"use client";
+import { getOrders } from "@/api/orders";
+import React, { useState } from "react";
 
-async function OrderManagementPage() {
-    const res = await fetch('http://localhost:3000/api/orders')
+function OrderManagementPage() {
+  const [orders, setOrders] = useState([]);
+
+  getOrders()
+    .then((response) => setOrders(response?.data))
+    .catch((error) => console.error(error));
+
   return (
     <div>
-      
+      {orders.map((order) => (
+       <OrderCard key={order.orderNumber} order={order} />
+      ))}
     </div>
-  )
+  );
 }
 
 export default OrderManagementPage;

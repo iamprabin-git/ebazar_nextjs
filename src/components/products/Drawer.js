@@ -47,9 +47,7 @@ function ProductDrawer({
     setShowFilters(false);
   }
 
-  useEffect(() => {
-    console.log(brandsFilter);
-  }, [brandsFilter]);
+  
   return (
     <div
       className={`h-svh w-full bg-[#0000002d] fixed top-0 left-0 z-10 ${
