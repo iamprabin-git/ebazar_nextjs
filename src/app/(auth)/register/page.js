@@ -11,8 +11,10 @@ import Link from "next/link";
 import { HOME_ROUTE, LOGIN_ROUTE } from "@/constants/routes";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "@/redux/auth/authActions";
+import { logoutUser } from "@/redux/auth/authSlice";
 
 function RegisterPage() {
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -25,11 +27,12 @@ function RegisterPage() {
   } = useForm();
 
   const password = watch("password");
-  const { user, error, loading } = useSelector((state) => state.auth);
+  const { user, error } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
   function onSubmit(data){
+    setLoading(true);
      dispatch(registerUser({
       address: {
         city: data.city,
@@ -41,7 +44,11 @@ function RegisterPage() {
       phone: data.phone,
       password: data.password,
       confirmPassword: data.confirmPassword,
-     }));
+     }))
+     .then(()=> {toast.success("User registered successfully!", { autoClose: 750 });
+    })
+      .catch((error) => toast.error(error.response?.data, { autoClose: 750 }))
+      .finally(() => setLoading(false));
 
       }
       useEffect(() => {
@@ -50,6 +57,7 @@ function RegisterPage() {
         if (error)
           toast.error(error, {
             autoClose: 750,
+            onClose: () => dispatch(logoutUser()),
           });
       }, [user, error, loading]);
 
@@ -207,6 +215,7 @@ function RegisterPage() {
             value={loading ? "Registering..." : "Register"}
             className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:opacity-70"
           />
+
         </div>
 
         {/* Login Link */}

@@ -13,6 +13,7 @@ import { loginUser } from "@/redux/auth/authActions";
 import { HOME_ROUTE, REGISTER_ROUTE } from "@/constants/routes";
 
 function Loginpage() {
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -20,13 +21,17 @@ function Loginpage() {
     formState: { errors },
   } = useForm();
 
-  const { user, error, loading } = useSelector((state) => state.auth);
+  const { user, error } = useSelector((state) => state.auth);
 
   const router = useRouter();
   const dispatch = useDispatch();
 
   function submitForm(data) {
-    dispatch(loginUser(data));
+    dispatch(loginUser(data))
+    .then(()=> {toast.success("User logged in successfully!", { autoClose: 750 });
+    })
+      .catch((error) => toast.error(error.response?.data, { autoClose: 750 }))
+      .finally(() => setLoading(false));
   }
   useEffect(() => {
     if (user) return router.push(HOME_ROUTE);

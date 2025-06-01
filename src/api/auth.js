@@ -10,4 +10,12 @@ async function signup(data) {
   return await axios.post(`${config.apiUrl}/api/auth/register`, data);
 }
 
-export { login, signup };
+async function forgotPassword(data) {
+  return await axios.post(`${config.apiUrl}/api/auth/forgot-password`, data);
+}
+
+async function resetPassword(id, token, data) {
+  return await axios.post(`${config.apiUrl}/api/auth/reset-password/${id}?token=${token}`, data);
+}
+
+export { login, signup, forgotPassword, resetPassword };
