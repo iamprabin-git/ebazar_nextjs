@@ -13,7 +13,6 @@ import { loginUser } from "@/redux/auth/authActions";
 import { HOME_ROUTE } from "@/constants/routes";
 
 function Loginpage() {
-  
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -24,46 +23,59 @@ function Loginpage() {
   const { user, error, loading } = useSelector((state) => state.auth);
 
   const router = useRouter();
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
-   function submitForm(data) {
-    
-      dispatch(loginUser(data));
-
-   }
-   useEffect(() => {
+  function submitForm(data) {
+    dispatch(loginUser(data));
+  }
+  useEffect(() => {
     if (user) return router.push(HOME_ROUTE);
 
-    if(error)
+    if (error)
       toast.error(error, {
         autoClose: 750,
       });
-    },[user, error]);
-    
-    
+  }, [user, error]);
+
   return (
-    <div>
-      <h1 className="text-2xl font-bold italic text-center">Login</h1>
-      <form onSubmit={handleSubmit(submitForm)}>
-        <div className="py-2">
-          <label htmlFor="email">Email Address</label>
+   
+    <section className="bg-white dark:bg-slate-800 p-5">
+      <h1 className="text-xl font-bold text-gray-900 md:text-2xl dark:text-white">
+        Sign in to your account
+      </h1>
+      <form
+        className="space-y-2 md:space-y-4"
+        onSubmit={handleSubmit(submitForm)}
+      >
+        <div>
+          <label
+            htmlFor="email"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Your email
+          </label>
           <input
             type="email"
             name="email"
             id="email"
-            placeholder="example@gmail.com"
+            className="w-full border rounded py-1 px-2 my-1"
+            placeholder="name@company.com"
             {...register("email", {
               required: "Email is required",
               pattern: {
                 value: EMAIL_REGEX,
               },
             })}
-            className="w-full border rounded py-1 px-2 my-1"
           />
-          <p className="text-red-600">{errors?.email?.message}</p>
+           <p className="text-red-600">{errors?.email?.message}</p>
         </div>
-        <div className="py-2 relative">
-          <label htmlFor="password">Password</label>
+        <div className="relative">
+          <label
+            htmlFor="password"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Password
+          </label>
           <input
             type={showPassword ? "text" : "password"}
             name="password"
@@ -76,13 +88,40 @@ function Loginpage() {
           />
           <button
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute top-13 right-2 transform -translate-y-1/2"
+            className="absolute top-12 right-2 transform -translate-y-1/2"
           >
             {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
           </button>
           <p className="text-red-600">{errors?.password?.message}</p>
         </div>
-        <div className="py-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-start">
+            <div className="flex items-center h-5">
+              <input
+                id="remember"
+                aria-describedby="remember"
+                type="checkbox"
+                className="w-4 h-4 border border-gray-300 rounded bg-gray-50  dark:bg-gray-700 dark:border-gray-600 "
+                required
+              />
+            </div>
+            <div className="ml-3 text-sm">
+              <label
+                htmlFor="remember"
+                className="text-gray-500 dark:text-gray-300"
+              >
+                Remember me
+              </label>
+            </div>
+          </div>
+          <Link
+            href="/forgot-password"
+            className="text-sm font-medium text-blue-600 hover:underline dark:text-primary-500"
+          >
+            Forgot password?
+          </Link>
+        </div>
+        <div>
           <input
             type="submit"
             disabled={loading}
@@ -90,19 +129,17 @@ function Loginpage() {
             className="w-full bg-blue-700 hover:bg-blue-800 disabled:opacity-70 text-white font-bold py-2 px-4 rounded cursor-pointer"
           />
         </div>
-        {/* Sign Up Link */}
-        <div className="mt-4 text-center">
-          <p className="text-sm text-gray-600">
-            Don&apos;t have an account?{" "}
-            <Link href="REGISTER_ROUTE"
-              className="text-blue-600 hover:underline font-medium"
-            >
-              Register here
-            </Link>
-          </p>
-        </div>
+        <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+          Don’t have an account yet?{" "}
+          <Link
+            href="REGISTER_ROUTE"
+            className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+          >
+            Sign up
+          </Link>
+        </p>
       </form>
-    </div>
+    </section>
   );
 }
 

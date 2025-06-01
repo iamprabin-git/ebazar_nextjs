@@ -27,7 +27,7 @@ function OrderCard({ order }) {
 
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {order.orderItems.map((item, index) => (
+        {order.orderItems.map((item, index) => item.product && (
           <OrderItemCard key={index} product={item.product} quantity={item.quantity}/>
         ))}
       </div>

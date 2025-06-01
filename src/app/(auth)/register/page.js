@@ -10,7 +10,6 @@ import { registerUser } from "@/api/auth";
 import Link from "next/link";
 import { LOGIN_ROUTE } from "@/constants/routes";
 
-
 function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -145,6 +144,8 @@ function RegisterPage() {
         </div>
       </form>
     </div>
+
+    
   );
 }
 
