@@ -1,8 +1,8 @@
-import { login, registerUser } from "@/api/auth";
+import { login, register, signup } from "@/api/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const loginUser = createAsyncThunk(
-  "authlogin",
+  "auth/login",
   async (data, { rejectWithValue }) => {
     try {
       const response = await login(data);
@@ -15,14 +15,16 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-export const register = createAsyncThunk(
-  "authregister",
-  async (formData, { rejectWithValue }) => {
+export const registerUser = createAsyncThunk(
+  "auth/register",
+  async (data, { rejectWithValue }) => {
     try {
-      const response = await registerUser(formData);
+      const response = await signup(data);
+      localStorage.setItem("authToken", response.data.token);
+
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data || "Registration failed");
+      return rejectWithValue(error.response.data);
     }
   }
 );

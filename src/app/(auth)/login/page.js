@@ -10,7 +10,7 @@ import { EMAIL_REGEX } from "@/constants/regex";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "@/redux/auth/authActions";
-import { HOME_ROUTE } from "@/constants/routes";
+import { HOME_ROUTE, REGISTER_ROUTE } from "@/constants/routes";
 
 function Loginpage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -132,7 +132,7 @@ function Loginpage() {
         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
           Don’t have an account yet?{" "}
           <Link
-            href="REGISTER_ROUTE"
+            href={REGISTER_ROUTE}
             className="font-medium text-primary-600 hover:underline dark:text-primary-500"
           >
             Sign up
