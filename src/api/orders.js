@@ -19,8 +19,8 @@ async function getOrders() {
     return await api.get("/api/orders");
 }
 
-async function getOrderByUser(userId) {
-    return await api.get(`/api/orders/user/${userId}`);
+async function getOrderByUser(userId, status ="pending") {
+    return await api.get(`/api/orders/user/${userId}?status=${status}`);
 }
 
 
