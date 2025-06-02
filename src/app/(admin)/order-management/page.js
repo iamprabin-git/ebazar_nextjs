@@ -1,5 +1,6 @@
 "use client";
 import { getOrders } from "@/api/orders";
+import OrderCard from "@/components/orders/Card";
 import React, { useState } from "react";
 
 function OrderManagementPage() {

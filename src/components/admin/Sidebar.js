@@ -1,11 +1,12 @@
 'use client';
 
-import { HOME_ROUTE, DASHBOARD_ROUTE, PRODUCT_MANAGEMENT_ROUTE, USER_MANAGEMENT_ROUTE} from "@/constants/routes";
+import { HOME_ROUTE, DASHBOARD_ROUTE, PRODUCT_MANAGEMENT_ROUTE, USER_MANAGEMENT_ROUTE, ORDERS_MANAGEMENT_ROUTE} from "@/constants/routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AiFillPieChart } from "react-icons/ai";
-import { FaHouseUser } from "react-icons/fa";
 import { GrProductHunt } from "react-icons/gr";
+import { LiaUsersCogSolid } from "react-icons/lia";
+import { GiNotebook } from "react-icons/gi";
 
 const sidebarMenu = [
   {
@@ -20,11 +21,17 @@ const sidebarMenu = [
     icon: <GrProductHunt className="w-5 h-5 text-gray-500" />,
 
   },
+  {
+    label: "Order Management",
+    route: ORDERS_MANAGEMENT_ROUTE,
+    icon: <GiNotebook className="w-5 h-5 text-gray-500" />,
+  },
     {
     label: "User Management",
     route: USER_MANAGEMENT_ROUTE,
-    icon: <FaHouseUser className="w-5 h-5 text-gray-500" />,
+    icon: <LiaUsersCogSolid className="w-5 h-5 text-gray-500" />,
   },
+  
 ];
 
 function AdminSidebar() {
