@@ -25,6 +25,9 @@ function OrdersTable({ orders }) {
               Total Price
             </th>
             <th scope="col" className="px-6 py-3">
+              Payment Methods
+            </th>
+            <th scope="col" className="px-6 py-3">
               Status
             </th>
             <th scope="col" className="px-6 py-3">
@@ -40,9 +43,10 @@ function OrdersTable({ orders }) {
             >
               <th
                 scope="row"
+                title={order.orderNumber}
                 className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                # {order.orderNumber}
+                # {index +1}
               </th>
               <td className="px-6 py-4">{order.user.name}</td>
               <td className="px-6 py-4">
@@ -55,6 +59,7 @@ function OrdersTable({ orders }) {
                 )}
               </td>
               <td className="px-6 py-4">{order.totalPrice}</td>
+              <td className="px-6 py-4">{order?.payment?.paymentMethod || "-"}</td>
               <td className="px-6 py-4"><OrderStatus status={order.status}/></td>
               <td className="px-6 py-4 flex">
                 <EditOrderButton id={order._id} defaultStatus={order.status} />

@@ -27,7 +27,7 @@ function OrderPaymentPage() {
 
     setTimeout(()=>{
       router.push(ORDERS_ROUTE)
-    }, 2500);
+    }, 1500);
   }, []);
 
   return (

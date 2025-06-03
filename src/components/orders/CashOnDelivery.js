@@ -5,9 +5,14 @@ import Spinner from "../products/Spinner";
 import { toast } from "react-toastify";
 import { confirmOrder } from "@/api/orders";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { ORDERS_ROUTE } from "@/constants/routes";
+import { ORDER_STATUS_CONFIRMED } from "@/constants/orderStatus";
 
 function CashOnDelivery({order}) {
   const [loading, setLoading] = useState(false);
+
+  const router=useRouter();
 
   function confirmPayment() {
     const orderId = order._id;
@@ -18,8 +23,9 @@ function CashOnDelivery({order}) {
       transactionId: crypto.randomUUID(),
       paymentMethod: "cash",
     })
-      .then((response) => {
-        toast.success("Order Completed Successfully", { autoClose: 750 });
+      .then(() => {
+        router.push(`${ORDERS_ROUTE}?status=${ORDER_STATUS_CONFIRMED}`);
+        toast.success("Order Confirmed! payment via cash", { autoClose: 750 });
       })
       .catch((error) => toast.error(error.response?.data, { autoClose: 750 }))
       .finally(() => setLoading(false));

@@ -67,7 +67,7 @@ function EditOrderModal({
               <div className="m-5 ">
                 <select
                   className="border px-5 py-2 border-gray-300 rounded-2xl"
-                  value={defaultStatus}
+                  defaultValue={defaultStatus}
                   onChange={(e) => setStatus(e.target.value)}
                 >
                   <option value={ORDER_STATUS_PENDING}>PENDING</option>
