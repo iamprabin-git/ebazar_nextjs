@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ConfirmOrder from "./Confirm";
 import { ORDER_STATUS_CONFIRMED, ORDER_STATUS_PENDING } from "@/constants/orderStatus";
+import OrderStatus from "./Status";
 
 
 function OrderItemCard({ product, quantity }) {
@@ -23,20 +24,8 @@ function OrderItemCard({ product, quantity }) {
   );
 }
 
-function OrderStatus({status}){
-  if(status === ORDER_STATUS_CONFIRMED){
-    return(
-      <span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300 uppercase">
-          {status}
-        </span>
-    );
-  }
-  return(
-    <span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300 uppercase">
-          {status}
-        </span>
-  );
-}
+
+ 
 function OrderCard({ order }) {
   return (
     <div className="bg-gray-100 border rounded-lg my-2 dark:bg-gray-800 ">

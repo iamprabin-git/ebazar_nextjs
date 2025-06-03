@@ -23,7 +23,10 @@ async function getOrderByUser(userId, status ="pending") {
     return await api.get(`/api/orders/user/${userId}?status=${status}`);
 }
 
+async function deleteOrder(id) {
+    return await api.delete(`/api/orders/${id}`);
+}
 
 
 
-export { createOrder, getOrders, getOrderByUser, checkoutOrder, confirmOrder };
+export { createOrder, getOrders, getOrderByUser, checkoutOrder, confirmOrder, deleteOrder };
