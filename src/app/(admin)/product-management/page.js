@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { PRODUCT_ADD_ROUTE } from '@/constants/routes';
+import Spinner from '@/components/products/Spinner';
 
 function ProductManagementPage() {
   const [products, setProducts] = useState([]);
@@ -35,7 +36,7 @@ function ProductManagementPage() {
       </div>
 
       {loading ? (
-        <div className='text-center text-2xl'>Product Loading.....</div>
+        <div className='text-center text-2xl'><Spinner /></div>
       ) : (
         <ProductTable products={products} />
       )}

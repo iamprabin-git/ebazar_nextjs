@@ -27,6 +27,9 @@ async function deleteOrder(id) {
     return await api.delete(`/api/orders/${id}`);
 }
 
+async function updateOrderStatus(id, data) {
+    return await api.put(`/api/orders/${id}/status`, data);
+}
 
 
-export { createOrder, getOrders, getOrderByUser, checkoutOrder, confirmOrder, deleteOrder };
+export { createOrder, getOrders, getOrderByUser, checkoutOrder, confirmOrder, deleteOrder, updateOrderStatus };

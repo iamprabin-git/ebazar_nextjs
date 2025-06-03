@@ -2,7 +2,8 @@ import { HiOutlineCog } from "react-icons/hi2";
 import OrderStatus from "./Status";
 
 import DeleteOrderButton from "./DeleteButton";
-import EditOrderModal from "./EditModal";
+
+import EditOrderButton from "./EditButton";
 
 function OrdersTable({ orders }) {
   return (
@@ -56,7 +57,7 @@ function OrdersTable({ orders }) {
               <td className="px-6 py-4">{order.totalPrice}</td>
               <td className="px-6 py-4"><OrderStatus status={order.status}/></td>
               <td className="px-6 py-4 flex">
-                <EditOrderModal id={order._id} />
+                <EditOrderButton id={order._id} defaultStatus={order.status} />
                 <DeleteOrderButton id={order._id} />
               </td>
             </tr>

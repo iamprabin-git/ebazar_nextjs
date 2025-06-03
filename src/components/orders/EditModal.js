@@ -6,40 +6,43 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setDeleted } from "@/redux/product/productSlice";
 import Spinner from "../products/Spinner";
-import { deleteOrder } from "@/api/orders";
+import { deleteOrder, updateOrderStatus } from "@/api/orders";
 import { useRouter } from "next/navigation";
-import { ORDER_STATUS_CONFIRMED, ORDER_STATUS_DELIVERED, ORDER_STATUS_PENDING, ORDER_STATUS_SHIPPED } from "@/constants/orderStatus";
+import {
+  ORDER_STATUS_CONFIRMED,
+  ORDER_STATUS_DELIVERED,
+  ORDER_STATUS_PENDING,
+  ORDER_STATUS_SHIPPED,
+} from "@/constants/orderStatus";
+import { BiEdit } from "react-icons/bi";
+import { setOrderStatus } from "@/redux/order/orderSlice";
 
 function EditOrderModal({
   showModal = false,
   setShowModal,
+  defaultStatus,
   orderId,
 }) {
-
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(defaultStatus);
 
-  const router = useRouter();
   const dispatch = useDispatch();
-  function confirmDelete() {
-    router.refresh();
+
+
+  function editOrderStatus() {
     setLoading(true);
-    deleteOrder(orderId)
-      .then(() =>{
-        toast.success("Order deleted successfully!", { autoClose: 750 });
-      dispatch(setDeleted("success"));
-   } )
-      .catch((error) =>
-        toast.error(
-          error.response?.data?.message || "Failed to delete product",
-          { autoClose: 1000 }
-        )
-      )
+    updateOrderStatus(orderId, { status })
+      .then(() => {
+        toast.success("Order Status Updated Successfully", { autoClose: 750 });
+        dispatch(setOrderStatus("Updated"));
+      })
+      .catch((error) => toast.error(error.response?.data, { autoClose: 750 }))
       .finally(() => {
         setLoading(false);
         setShowModal(false);
-       
       });
   }
+
   return (
     <div className={showModal ? "block" : "hidden"}>
       <div className="w-full h-svh flex items-center justify-center bg-black/50 fixed top-0 right-0 bottom-0 left-0 z-50">
@@ -56,26 +59,31 @@ function EditOrderModal({
             </button>
 
             <div className="p-4 md:p-5 text-center">
-              <IoAlertCircleSharp className="mx-auto mb-4 text-red-600 w-12 h-12 dark:text-gray-200" />
+              <BiEdit className="mx-auto mb-4 text-blue-600 w-12 h-12 dark:text-gray-200" />
+
               <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
                 update order Status
               </h3>
-              <select>
-                <option value={ORDER_STATUS_PENDING}>PENDING</option>
-                <option value={ORDER_STATUS_CONFIRMED}>CONFIRMED</option>
-                <option value={ORDER_STATUS_DELIVERED}>DELIVERED</option>
-                <option value={ORDER_STATUS_SHIPPED}>SHIPPED</option>
-               
-              </select>
+              <div className="m-5 ">
+                <select
+                  className="border px-5 py-2 border-gray-300 rounded-2xl"
+                  value={defaultStatus}
+                  onChange={(e) => setStatus(e.target.value)}
+                >
+                  <option value={ORDER_STATUS_PENDING}>PENDING</option>
+                  <option value={ORDER_STATUS_CONFIRMED}>CONFIRMED</option>
+                  <option value={ORDER_STATUS_SHIPPED}>SHIPPED</option>
+                  <option value={ORDER_STATUS_DELIVERED}>DELIVERED</option>
+                </select>
+              </div>
               <button
-                // onClick={confirmDelete}
+                onClick={editOrderStatus}
                 disabled={loading}
                 data-modal-hide="popup-modal"
-                className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
+                className="text-white bg-blue-600 hover:bg-blue-400  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center cursor-pointer"
               >
-                {"Yes, I'm sure"}
-                {loading && 
-                <Spinner className="w-4 h-4 fill-red-500 ml-2" />}
+                Update
+                {loading && <Spinner className="w-4 h-4 fill-blue-500 ml-2" />}
               </button>
               <button
                 data-modal-hide="popup-modal"

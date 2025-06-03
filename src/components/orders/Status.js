@@ -3,7 +3,7 @@ import { ORDER_STATUS_CONFIRMED, ORDER_STATUS_DELIVERED, ORDER_STATUS_SHIPPED } 
 function OrderStatus({status}){
   if(status === ORDER_STATUS_CONFIRMED){
     return(
-      <span className="bg-blue-800 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-white  uppercase">
+      <span className="bg-blue-800 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-white  uppercase">
           {status}
         </span>
     );

@@ -8,6 +8,7 @@ import { setDeleted } from "@/redux/product/productSlice";
 import Spinner from "../products/Spinner";
 import { deleteOrder } from "@/api/orders";
 import { useRouter } from "next/navigation";
+import { setOrderStatus } from "@/redux/order/orderSlice";
 
 function DeleteOrderModal({
   showModal = false,
@@ -17,15 +18,14 @@ function DeleteOrderModal({
 
   const [loading, setLoading] = useState(false);
 
-  const router = useRouter();
+  
   const dispatch = useDispatch();
   function confirmDelete() {
-    router.refresh();
     setLoading(true);
     deleteOrder(orderId)
       .then(() =>{
         toast.success("Order deleted successfully!", { autoClose: 750 });
-      dispatch(setDeleted("success"));
+      dispatch(setOrderStatus("Deleted"));
    } )
       .catch((error) =>
         toast.error(

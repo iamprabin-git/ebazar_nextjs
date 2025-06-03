@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { TiPencil } from "react-icons/ti";
 import EditOrderModal from "./EditModal";
 
-function EditOrderButton({id}) {
+function EditOrderButton({id, defaultStatus}) {
     const [showModal, setShowModal] = useState(false);
     
 
@@ -19,7 +19,7 @@ function EditOrderButton({id}) {
       <TiPencil className="w-5 h-5"/>
     </button>
 
-    <EditOrderModal showModal={showModal} setShowModal={setShowModal} orderId={id} />
+    <EditOrderModal showModal={showModal} setShowModal={setShowModal} orderId={id} defaultStatus={defaultStatus}/>
     </>
   );
 }
