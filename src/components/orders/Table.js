@@ -6,10 +6,10 @@ function OrdersTable({ orders }) {
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-6 py-3 items-center justify-center">
               Order ID
             </th>
-           
+
             <th scope="col" className="px-6 py-3">
               Customer Name
             </th>
@@ -23,9 +23,8 @@ function OrdersTable({ orders }) {
               Status
             </th>
             <th scope="col" className="px-6 py-3">
-              <HiOutlineCog />
+              <HiOutlineCog className="w-6 h-6" />
             </th>
-         
           </tr>
         </thead>
         <tbody>
@@ -41,15 +40,22 @@ function OrdersTable({ orders }) {
                 # {order.orderNumber}
               </th>
               <td className="px-6 py-4">{order.user.name}</td>
-              <td className="px-6 py-4">{order.customerName}</td>
-              <td className="px-6 py-4">{order.products}</td>
-              <td className="px-6 py-4">{order.totalPrice}</td>
               <td className="px-6 py-4">
-                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                  {order.status}
-                </span> 
-              </td> 
-              
+                {order.orderItems.map((item, productIndex) =>
+                  item.product ? (
+                    <li key={productIndex}>
+                     <span className="font-semibold">{item?.product?.name}</span>  X {item.quantity}
+                    </li>
+                  ) : null
+                )}
+              </td>
+              <td className="px-6 py-4">{order.totalPrice}</td>
+              <td className="px-6 py-4">{order.status}</td>
+              <td className="px-6 py-4">
+                <button className="px-4 py-2 bg-green-500 text-white rounded-3xl">
+                  Edit
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
