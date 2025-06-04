@@ -1,6 +1,8 @@
+import { LOGIN_ROUTE } from "@/constants/routes";
 import { allowedAdminRoles } from "@/helpers/auth";
 import { logoutUser } from "@/redux/auth/authSlice";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 
@@ -8,9 +10,13 @@ function AuthUserPopup({ user, setShowPopup }) {
   const dispatch = useDispatch();
   const isAllowed = allowedAdminRoles(user?.roles);
 
+  const router = useRouter();
+
   function logout() {
     dispatch(logoutUser());
     localStorage.removeItem("authToken");
+
+    router.push(LOGIN_ROUTE);
   }
   return (
     <div className="absolute top-10 right-0 bg-white shadow-lg p-4">

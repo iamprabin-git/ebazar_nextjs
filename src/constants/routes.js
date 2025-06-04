@@ -6,6 +6,7 @@ export const DASHBOARD_ROUTE = "/dashboard";
 export const HOME_ROUTE = "/";
 export const PRODUCT_ADD_ROUTE = "/product-management/add";
 export const PRODUCT_EDIT_ROUTE = "/product-management/:id/edit";
+export const USER_UPDATE_ROUTE = "user-management/${user.id}/edit";
 export const ORDERS_MANAGEMENT_ROUTE = "/order-management";
 export const PRODUCTS_ROUTE = "/products";
 export const BUY_ROUTE = "/buy";

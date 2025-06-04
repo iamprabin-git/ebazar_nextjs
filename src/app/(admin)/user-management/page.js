@@ -6,12 +6,23 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setOrderStatus } from '@/redux/order/orderSlice';
+import { useRouter } from 'next/navigation';
+import { LOGIN_ROUTE } from '@/constants/routes';
 
 function UserManagementPage() {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
-  const { status } = useSelector((state) => state.order);
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push(LOGIN_ROUTE);
+      return;
+    }
+  }, [user, router]);
 
   useEffect(() => {
     setLoading(true);
