@@ -1,6 +1,7 @@
 "use client";
 import { getUserById } from '@/api/users';
 import BackButton from '@/components/BackButton';
+import UserForm from '@/components/users/Form';
 import { useParams } from 'next/navigation';
 import React, { use, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
@@ -20,9 +21,10 @@ function UserUpdatePage() {
   return (
     <div>
       <BackButton/>
-        <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+        <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white items-center">
           Edit <span className='text-amber-400 italic'>{user?.name}</span>
         </h2>
+        <UserForm user={user} />
     </div>
   )
 }
