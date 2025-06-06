@@ -1,4 +1,5 @@
 import DashboardCard from "@/components/dashboard/Card";
+import OrdersDashbord from "@/components/dashboard/Orders";
 import React from "react";
 
 function DashPage() {
@@ -7,12 +8,7 @@ function DashPage() {
       <div className="flex justify-between items-center pb-5 px-3">
         <h1 className="text-2xl font-bold">Dashboard</h1>
       </div>
-      <DashboardCard
-        label="confirmeb orders"
-        value={4}
-        className="bg-green-100"
-        icon="https://img.icons8.com/ios/50/000000/checked--v1.png"
-      />
+      <OrdersDashbord className="flex mt-5"/>
     </div>
   );
 }
