@@ -5,7 +5,7 @@ import { IoIosCog } from 'react-icons/io';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { TiPencil } from 'react-icons/ti';
 
-function UsersTable({users, o}) {
+function UsersTable({users}) {
   return (
    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -53,7 +53,7 @@ function UsersTable({users, o}) {
               <td className="px-6 py-4">{user?.email}</td>
               <td className="px-6 py-4">{user?.phone}</td>
               <td className="px-6 py-4">Rs. {user?.address.city}, {user?.address.province}</td>
-              <td className="px-6 py-4">{user.role?.join(", ")}</td>
+              <td className="px-6 py-4">{user.roles?.join(", ")}</td>
               <td className="px-6 py-10 flex">
                 <Link
                   href={USER_UPDATE_ROUTE}
@@ -63,7 +63,7 @@ function UsersTable({users, o}) {
                 </Link>
                 <button
                   className="bg-red-600 text-white text-xs font-medium me-2 px-3 py-3 rounded-sm cursor-pointer dark:bg-red-900 dark:text-red-500"
-                  onClick={() => removeuser(user)}
+                  
                 >
                   <RiDeleteBin6Fill />
                 </button>
