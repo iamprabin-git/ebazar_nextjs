@@ -1,4 +1,4 @@
-import UserUpdatePage from '@/app/(admin)/user-management/[id]/edit/page';
+import { updateUser } from '@/api/users';
 import { EMAIL_REGEX } from '@/constants/regex';
 import { ROLE_ADMIN, ROLE_AGENT, ROLE_USER } from '@/constants/roles';
 import { useRouter } from 'next/navigation';
@@ -19,16 +19,16 @@ function UserForm({ user }) {
           name: user?.name,
           email: user?.email,
           phone: user?.phone,
-            city:user?.address?.city,
-            province:user?.address?.province,
-            street:user?.address?.street,
+          city:user?.address?.city,
+          province:user?.address?.province,
+          street:user?.address?.street,
           roles:user?.roles
         }
       });
 
       function onSubmit(data) {
         setLoading(true);
-        UserUpdatePage(user.id,{
+       updateUser(user.id,{
           name:data.name,
           email:data.email,
           phone:data.phone,
@@ -45,7 +45,7 @@ function UserForm({ user }) {
       }
   return (
     <form 
-    className='space-y-4 md:space-y-6'
+    className='space-y-4 md:space-y-6 border-b border-gray-900/10 pb-12'
     onSubmit={handleSubmit(onSubmit)}>
    
 
@@ -105,6 +105,7 @@ function UserForm({ user }) {
             placeholder="Kathmandu, Nepal"
             className="w-full border rounded py-1 px-2 my-1"
           />
+          <p className="text-red-600">{errors?.city?.message}</p>
         </div>
 
         {/* Street */}
@@ -117,6 +118,7 @@ function UserForm({ user }) {
             placeholder="Newroad"
             className="w-full border rounded py-1 px-2 my-1"
           />
+          <p className="text-red-600">{errors?.street?.message}</p>
         </div>
 
         {/* Province */}
@@ -144,16 +146,17 @@ function UserForm({ user }) {
           <label htmlFor="role">Roles</label>
           <select
             id="role"
-            {...register("role")}
             className="w-full border rounded py-1 px-2 my-1"
+            {...register("role")}
+            defaultValue={ROLE_USER}
           >
-            <option defaultValue="">{ROLE_USER}</option>
+          
             <option value={ROLE_ADMIN}>{ROLE_ADMIN}</option>
             <option value={ROLE_AGENT}>{ROLE_AGENT}</option>
             <option value={ROLE_USER}>{ROLE_USER}</option>
        
           </select>
-          <p className="text-red-600">{errors?.role?.message}</p>
+         
         </div>
 
         {/* Submit */}

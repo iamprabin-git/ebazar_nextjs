@@ -5,7 +5,7 @@ import { IoIosCog } from 'react-icons/io';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { TiPencil } from 'react-icons/ti';
 
-function UsersTable({users}) {
+function UsersTable({users, o}) {
   return (
    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -53,7 +53,7 @@ function UsersTable({users}) {
               <td className="px-6 py-4">{user?.email}</td>
               <td className="px-6 py-4">{user?.phone}</td>
               <td className="px-6 py-4">Rs. {user?.address.city}, {user?.address.province}</td>
-              <td className="px-6 py-4">{user.roles?.join(", ")}</td>
+              <td className="px-6 py-4">{user.role?.join(", ")}</td>
               <td className="px-6 py-10 flex">
                 <Link
                   href={USER_UPDATE_ROUTE}

@@ -19,13 +19,15 @@ function UserUpdatePage() {
       .finally(() => setLoading(false));
     }, []);
   return (
-    <div>
+    <section className='py-3'>
       <BackButton/>
+      <div className='py-5 px-4 mx-auto max-w-2xl'>
         <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white items-center">
           Edit <span className='text-amber-400 italic'>{user?.name}</span>
         </h2>
         <UserForm user={user} />
-    </div>
+        </div>
+    </section>
   )
 }
 
