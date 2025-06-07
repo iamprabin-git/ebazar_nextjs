@@ -13,7 +13,8 @@ function UserUpdatePage() {
   const [user, setUser] = useState(null); // default to null
   const params = useParams();
   const userId = params?.id;
-
+ console.log(userId)
+  
   useEffect(() => {
     if (!userId) return;
 
@@ -38,6 +39,8 @@ function UserUpdatePage() {
             <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
               Edit <span className="text-amber-400 italic">{user?.name}</span>
             </h2>
+           
+
             <UserForm user={user} />
           </>
         )}

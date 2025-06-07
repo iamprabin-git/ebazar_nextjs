@@ -1,4 +1,4 @@
-import { USER_UPDATE_ROUTE } from '@/constants/routes';
+import { USER_MANAGEMENT_ROUTE, USER_UPDATE_ROUTE } from '@/constants/routes';
 import Link from 'next/link';
 import React, { use } from 'react'
 import { IoIosCog } from 'react-icons/io';
@@ -56,7 +56,7 @@ function UsersTable({users}) {
               <td className="px-6 py-4">{user.roles?.join(", ")}</td>
               <td className="px-6 py-10 flex">
                 <Link
-                  href={USER_UPDATE_ROUTE}
+                  href={`${USER_MANAGEMENT_ROUTE}/${user.id}/edit`}
                   className="bg-blue-500 text-white text-xs font-medium me-2 px-3 py-3 rounded-sm dark:bg-blue-900 dark:text-blue-300 hover:opacity-90"
                 >
                   <TiPencil />
