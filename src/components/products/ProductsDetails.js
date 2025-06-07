@@ -2,57 +2,103 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { FaStar } from "react-icons/fa";
+import Link from "next/link";
+import AddToCart from "./AddToCart";
+import { CiCirclePlus } from "react-icons/ci";
+import HandleQuantity from "../cart/Quantity";
 
 const ProductDetail = ({ product }) => {
   const [mainImage, setMainImage] = useState(product.imageUrls[0]);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 bg-white shadow-md rounded-lg">
-      <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-      <p className="text-sm text-gray-500 mb-4">
-        Brand: {product.brand} | Category: {product.category}
-      </p>
 
-      {/* Main Image */}
-      <div className="mb-4">
-        <Image
-          src={mainImage}
-          alt={product.name}
-          width={800}
-          height={400}
-          className="rounded-lg object-cover"
-        />
+    <section className="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased">
+      <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
+          {/* Main Image */}
+          <div className="shrink-0 max-w-md lg:max-w-lg mx-auto">
+            <Image
+              src={mainImage}
+              alt={product.name}
+              width={800}
+              height={400}
+              className="rounded-lg object-cover"
+            />
+            {/* Thumbnails */}
+            <div className="flex space-x-3 mb-6">
+              {product.imageUrls.map((img, index) => (
+                <button
+                  key={index}
+                  onClick={() => setMainImage(img)}
+                  className={`border rounded-md overflow-hidden ${
+                    img === mainImage ? "border-blue-500" : "border-gray-300"
+                  }`}
+                >
+                  <Image
+                    src={img}
+                    alt={`Thumbnail ${index}`}
+                    width={100}
+                    height={60}
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="mt-6 sm:mt-8 lg:mt-0">
+            <div className="text-sm text-yellow-300 border border-gray-200 rounded-lg h-6 flex items-center mb-4 w-fit bg-blue-700 px-2.5 py-0.5 dark:text-white">
+              {product.stock > 0 ? "In Stock" : "Out of Stock"}
+            </div>
+            <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
+              {product.name}
+            </h1>
+            <p className="text-sm text-gray-500 mb-4">
+              Brand: {product.brand} | Category: {product.category}
+            </p>
+            <div className="mt-4 sm:items-center sm:gap-4 sm:flex">
+              <p className="text-2xl font-extrabold text-gray-900 sm:text-3xl dark:text-white">
+                {" "}
+                Rs. {product.price}
+              </p>
+            </div>
+            <div className="flex items-center gap-2 mt-2 sm:mt-0">
+              <div className="flex items-center gap-1">
+                <FaStar className="text-yellow-400"/>
+                <FaStar className="text-yellow-400"/>
+                <FaStar className="text-yellow-400"/>
+                <FaStar className="text-yellow-400"/>
+                <FaStar className="text-yellow-400"/>
+              </div>
+               <p
+                className="text-sm font-medium leading-none text-gray-500 dark:text-gray-400"
+              >
+                (5.0)
+              </p>
+              <Link
+                href="#"
+                className="text-sm font-medium leading-none m-5 text-gray-900 underline hover:no-underline dark:text-white"
+              >
+                345 Reviews
+              </Link>
+            </div>
+            <div className="flex gap-2">
+           
+            <AddToCart product={product} className="mt-4"/>
+            <HandleQuantity product={product} />
+            </div>
+            <hr className="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
+
+            <p className="mb-6 text-gray-500 dark:text-gray-400">{product.description}</p>
+
+            
+
+            <p className="text-sm text-gray-400">
+              Posted on {new Date(product.createdAt).toLocaleDateString()}
+            </p>
+          </div>
+        </div>
       </div>
-
-      {/* Thumbnails */}
-      <div className="flex space-x-3 mb-6">
-        {product.imageUrls.map((img, index) => (
-          <button
-            key={index}
-            onClick={() => setMainImage(img)}
-            className={`border rounded-md overflow-hidden ${
-              img === mainImage ? "border-blue-500" : "border-gray-300"
-            }`}
-          >
-            <Image src={img} alt={`Thumbnail ${index}`} width={100} height={60} />
-          </button>
-        ))}
-      </div>
-
-      <p className="text-gray-700 text-lg mb-4">{product.description}</p>
-
-      <div className="text-xl font-semibold text-green-700 mb-2">
-        Rs. {product.price}
-      </div>
-
-      <div className="text-sm text-gray-500 mb-2">
-        {product.stock > 0 ? "In Stock" : "Out of Stock"}
-      </div>
-
-      <p className="text-sm text-gray-400">
-        Posted on {new Date(product.createdAt).toLocaleDateString()}
-      </p>
-    </div>
+    </section>
   );
 };
 

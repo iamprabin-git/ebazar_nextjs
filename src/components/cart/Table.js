@@ -3,24 +3,27 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
-import { decreaseQuantity, increaseQuantity, removeFromCart } from "@/redux/cart/cartSlice";
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from "@/redux/cart/cartSlice";
 import { GrSettingsOption } from "react-icons/gr";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Link from "next/link";
 import RemoveFromCartModal from "./Modal";
+import HandleQuantity from "./Quantity";
 
-function CartTable({products}) {
+function CartTable({ products }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
- 
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   function removeFromCart(product) {
     setShowModal(true);
     setSelectedProduct(product);
   }
 
-  
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -42,7 +45,7 @@ function CartTable({products}) {
               Total price
             </th>
             <th scope="col" className="px-6 py-3">
-              < GrSettingsOption className="h-5 w-5"/>
+              <GrSettingsOption className="h-5 w-5" />
             </th>
           </tr>
         </thead>
@@ -65,19 +68,7 @@ function CartTable({products}) {
                 {product.name}
               </td>
               <td className="px-6 py-4">
-                <div className="flex items-center">
-                  <button 
-                  onClick={() => dispatch(decreaseQuantity(product))}
-                  className="inline-flex items-center justify-center h-10 w-10 p-1 ms-3 text-sm font-medium text-gray-500 bg-white hover:bg-gray-100  dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 ">
-                    <CiCircleMinus className="h-6 w-6 " />
-                  </button>
-                <p className="px-4 py-2 border rounded-lg">{product.quantity}</p>
-                  <button 
-                  onClick={() => dispatch(increaseQuantity(product))}
-                  className="inline-flex items-center justify-center h-10 w-10 p-1 ms-3 text-sm font-medium text-gray-500 bg-white hover:bg-gray-100  dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 ">
-                    <CiCirclePlus className="h-6 w-6 " />
-                  </button>
-                </div>
+                <HandleQuantity product={product} />
               </td>
               <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                 Rs. {product.price}
@@ -87,18 +78,22 @@ function CartTable({products}) {
               </td>
               <td className="px-6 py-4">
                 <button
-               onClick={() => removeFromCart(product)}
+                  onClick={() => removeFromCart(product)}
                   className="flex gap-2 items-center border rounded-lg px-3 py-1 font-medium text-red-600 dark:text-red-500 hover:bg-green-700 hover:text-white cursor-pointer"
                 >
-                  Remove 
-                  <RiDeleteBin5Line className="h-6 w-6 "/>
+                  Remove
+                  <RiDeleteBin5Line className="h-6 w-6 " />
                 </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <RemoveFromCartModal showModal={showModal} setShowModal={setShowModal} product={selectedProduct}/>
+      <RemoveFromCartModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        product={selectedProduct}
+      />
     </div>
   );
 }
