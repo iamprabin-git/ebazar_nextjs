@@ -1,6 +1,7 @@
 import { getCategories, getPropertyById } from '@/api/products';
 import BackButton from '@/components/BackButton';
-import PropertyForm from '@/components/products/Form';
+import ProductForm from '@/components/products/Form';
+
 
 import React from 'react'
 
@@ -14,7 +15,7 @@ async function ProductEditPage({params}) {
         <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
           Edit <span className='text-amber-400 italic'>{response?.data?.name}</span>
         </h2>
-        <PropertyForm 
+        <ProductForm
         id={id}
         product={response?.data} 
         categories={categoriesResponse?.data}/>

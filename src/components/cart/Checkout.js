@@ -13,6 +13,7 @@ function Checkout({ products, totalPrice }) {
   const router = useRouter();
 
   function checkoutOrder() {
+    setLoading(true);
     createOrder({
       orderItems: products.map((item) => ({
         product: item.id,

@@ -8,14 +8,19 @@ import AddToCart from "./AddToCart";
 
 import ProductDescription from "./Description";
 import AddToFavourite from "./AddToFavourite";
+import BackButton from "../BackButton";
+import RelatedProducts from "./RelatedProducts";
 
 const ProductDetail = ({ product }) => {
   const [mainImage, setMainImage] = useState(product.imageUrls[0]);
 
+
   return (
     <section className="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased">
+      <BackButton classNameme="mb-4"/>
       <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
+          
           {/* Main Image */}
           <div className="shrink-0 max-w-md lg:max-w-lg mx-auto ">
             <Image
@@ -104,6 +109,7 @@ const ProductDetail = ({ product }) => {
              
             </div>
             <hr className="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
+            <RelatedProducts category={product.category} /> 
           </div>
         </div>
       </div>

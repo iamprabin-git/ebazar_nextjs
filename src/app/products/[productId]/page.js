@@ -7,7 +7,7 @@ export default async function ProductByIdPage({ params }) {
     const response = await getProductById((await params).productId);
     const product = response.data;
 
-    return <ProductDetail product={product} />;
+    return <ProductDetail product={{id:(await params).productId,...product}} />;
   } catch (error) {
     return (
       <div className="p-4 text-red-600">
