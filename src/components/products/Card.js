@@ -36,7 +36,7 @@ function ProductCard({ product }) {
 
       <p className="py-2">Rs.{product.price}</p>
       
-      <div className="px-4">
+      <div className="px-1">
         <AddToCart  product={product} className="w-full"/>
       </div>
     </div>

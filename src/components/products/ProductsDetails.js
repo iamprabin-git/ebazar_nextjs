@@ -5,15 +5,14 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import Link from "next/link";
 import AddToCart from "./AddToCart";
-import { CiCirclePlus } from "react-icons/ci";
-import HandleQuantity from "../cart/Quantity";
+
 import ProductDescription from "./Description";
+import AddToFavourite from "./AddToFavourite";
 
 const ProductDetail = ({ product }) => {
   const [mainImage, setMainImage] = useState(product.imageUrls[0]);
 
   return (
-
     <section className="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased">
       <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
@@ -54,7 +53,6 @@ const ProductDetail = ({ product }) => {
               {product.name}
             </h1>
             <p className="text-sm text-gray-500 mb-4">
-              
               Brand: {product.brand} | Category: {product.category}
             </p>
             <div className="mt-4 sm:items-center sm:gap-4 sm:flex">
@@ -63,53 +61,56 @@ const ProductDetail = ({ product }) => {
                 Rs. {product.price}
               </p>
               <div className="flex items-center gap-2 mt-2 sm:mt-0">
-              <div className="flex items-center gap-1">
-                <FaStar className="text-yellow-400"/>
-                <FaStar className="text-yellow-400"/>
-                <FaStar className="text-yellow-400"/>
-                <FaStar className="text-yellow-400"/>
-                <FaStar className="text-yellow-400"/>
+                <div className="flex items-center gap-1">
+                  <FaStar className="text-yellow-400" />
+                  <FaStar className="text-yellow-400" />
+                  <FaStar className="text-yellow-400" />
+                  <FaStar className="text-yellow-400" />
+                  <FaStar className="text-yellow-400" />
+                </div>
+                <p className="text-sm font-medium leading-none text-gray-500 dark:text-gray-400">
+                  (5.0)
+                </p>
+                <Link
+                  href="#"
+                  className="text-sm font-medium leading-none m-5 text-gray-900 underline hover:no-underline dark:text-white"
+                >
+                  345 Reviews
+                </Link>
               </div>
-               <p
-                className="text-sm font-medium leading-none text-gray-500 dark:text-gray-400"
-              >
-                (5.0)
-              </p>
-              <Link
-                href="#"
-                className="text-sm font-medium leading-none m-5 text-gray-900 underline hover:no-underline dark:text-white"
-              >
-                345 Reviews
-              </Link>
-            </div>
             </div>
             <div className="flex gap-2 mt-2">
-            {product?.brand && (
-              <Link href={``} className="text-sm font-medium leading-none rounded-lg py-1 px-3 bg-blue-500 text-gray-900 hover:underline hover:opacity-80 dark:text-white">{product?.brand}</Link>
-            )}
-            {product?.category && (
-              <Link href={``} className="text-sm font-medium leading-none rounded-lg py-1 px-3 bg-gray-500 text-gray-900 hover:underline hover:opacity-80 dark:text-white">{product?.category}</Link>
-            )}
+              {product?.brand && (
+                <Link
+                  href={``}
+                  className="text-sm font-medium leading-none rounded-lg py-1 px-3 bg-blue-500 text-gray-900 hover:underline hover:opacity-80 dark:text-white"
+                >
+                  {product?.brand}
+                </Link>
+              )}
+              {product?.category && (
+                <Link
+                  href={``}
+                  className="text-sm font-medium leading-none rounded-lg py-1 px-3 bg-gray-500 text-gray-900 hover:underline hover:opacity-80 dark:text-white"
+                >
+                  {product?.category}
+                </Link>
+              )}
             </div>
-            <div className="flex gap-2">
-           
-            <AddToCart product={product} className="mt-4"/>
-            <HandleQuantity product={product} />
+            <div className="flex gap-3 h-10">
+              <AddToFavourite />
+              <AddToCart product={product} className="mt-4 px-5 py-5" />
+              
+             
             </div>
             <hr className="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
-
-            
-
-            
-
-           
           </div>
         </div>
       </div>
       <ProductDescription description={product?.description} />
-       <p className="text-sm text-gray-400 mt-7">
-              Posted on {new Date(product.createdAt).toLocaleDateString()}
-            </p>
+      <p className="text-sm text-gray-400 mt-7">
+        Posted on {new Date(product.createdAt).toLocaleDateString()}
+      </p>
     </section>
   );
 };

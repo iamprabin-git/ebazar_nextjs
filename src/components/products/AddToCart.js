@@ -18,7 +18,7 @@ function AddToCart({ product, className }) {
     return (
         <button 
         onClick={addProductToCart} 
-        className={`px-4 py-2 bg-blue-500 hover:opacity-80 text-white rounded-md flex items-center justify-center gap-3 ${className}`}>
+        className={`bg-blue-500 hover:opacity-80 text-white rounded-md flex items-center justify-center gap-3 px-5 py-1 ${className}`}>
             <FaCartPlus />
             Add to Cart
         </button>
