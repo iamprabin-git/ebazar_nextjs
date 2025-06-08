@@ -7,6 +7,7 @@ import Link from "next/link";
 import AddToCart from "./AddToCart";
 import { CiCirclePlus } from "react-icons/ci";
 import HandleQuantity from "../cart/Quantity";
+import ProductDescription from "./Description";
 
 const ProductDetail = ({ product }) => {
   const [mainImage, setMainImage] = useState(product.imageUrls[0]);
@@ -17,7 +18,7 @@ const ProductDetail = ({ product }) => {
       <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
           {/* Main Image */}
-          <div className="shrink-0 max-w-md lg:max-w-lg mx-auto">
+          <div className="shrink-0 max-w-md lg:max-w-lg mx-auto ">
             <Image
               src={mainImage}
               alt={product.name}
@@ -26,7 +27,7 @@ const ProductDetail = ({ product }) => {
               className="rounded-lg object-cover"
             />
             {/* Thumbnails */}
-            <div className="flex space-x-3 mb-6">
+            <div className="flex space-x-3 mb-6 mt-5">
               {product.imageUrls.map((img, index) => (
                 <button
                   key={index}
@@ -53,6 +54,7 @@ const ProductDetail = ({ product }) => {
               {product.name}
             </h1>
             <p className="text-sm text-gray-500 mb-4">
+              
               Brand: {product.brand} | Category: {product.category}
             </p>
             <div className="mt-4 sm:items-center sm:gap-4 sm:flex">
@@ -60,8 +62,7 @@ const ProductDetail = ({ product }) => {
                 {" "}
                 Rs. {product.price}
               </p>
-            </div>
-            <div className="flex items-center gap-2 mt-2 sm:mt-0">
+              <div className="flex items-center gap-2 mt-2 sm:mt-0">
               <div className="flex items-center gap-1">
                 <FaStar className="text-yellow-400"/>
                 <FaStar className="text-yellow-400"/>
@@ -81,6 +82,15 @@ const ProductDetail = ({ product }) => {
                 345 Reviews
               </Link>
             </div>
+            </div>
+            <div className="flex gap-2 mt-2">
+            {product?.brand && (
+              <Link href={``} className="text-sm font-medium leading-none rounded-lg py-1 px-3 bg-blue-500 text-gray-900 hover:underline hover:opacity-80 dark:text-white">{product?.brand}</Link>
+            )}
+            {product?.category && (
+              <Link href={``} className="text-sm font-medium leading-none rounded-lg py-1 px-3 bg-gray-500 text-gray-900 hover:underline hover:opacity-80 dark:text-white">{product?.category}</Link>
+            )}
+            </div>
             <div className="flex gap-2">
            
             <AddToCart product={product} className="mt-4"/>
@@ -88,16 +98,18 @@ const ProductDetail = ({ product }) => {
             </div>
             <hr className="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
 
-            <p className="mb-6 text-gray-500 dark:text-gray-400">{product.description}</p>
+            
 
             
 
-            <p className="text-sm text-gray-400">
-              Posted on {new Date(product.createdAt).toLocaleDateString()}
-            </p>
+           
           </div>
         </div>
       </div>
+      <ProductDescription description={product?.description} />
+       <p className="text-sm text-gray-400 mt-7">
+              Posted on {new Date(product.createdAt).toLocaleDateString()}
+            </p>
     </section>
   );
 };

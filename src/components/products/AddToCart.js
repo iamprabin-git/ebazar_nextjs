@@ -3,8 +3,9 @@
 import { addToCart } from "@/redux/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { FaCartPlus } from "react-icons/fa";
 
-function AddToCart({ product }) {
+function AddToCart({ product, className }) {
     const dispatch = useDispatch();
 
     function addProductToCart() {
@@ -17,7 +18,8 @@ function AddToCart({ product }) {
     return (
         <button 
         onClick={addProductToCart} 
-        className="px-4 py-2 bg-blue-500 hover:opacity-80 text-white rounded-md">
+        className={`px-4 py-2 bg-blue-500 hover:opacity-80 text-white rounded-md flex items-center justify-center gap-3 ${className}`}>
+            <FaCartPlus />
             Add to Cart
         </button>
     );

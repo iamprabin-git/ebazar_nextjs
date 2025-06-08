@@ -37,7 +37,7 @@ function ProductCard({ product }) {
       <p className="py-2">Rs.{product.price}</p>
       
       <div className="px-4">
-        <AddToCart  product={product} />
+        <AddToCart  product={product} className="w-full"/>
       </div>
     </div>
   );
