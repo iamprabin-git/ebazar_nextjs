@@ -1,4 +1,4 @@
-import { getCategories, getPropertyById } from '@/api/products';
+import { getCategories, getProductById } from '@/api/products';
 import BackButton from '@/components/BackButton';
 import ProductForm from '@/components/products/Form';
 
@@ -7,7 +7,7 @@ import React from 'react'
 
 async function ProductEditPage({params}) {
   const id = (await params).id;
-  const response= await getPropertyById(id);
+  const response= await getProductById(id);
   const categoriesResponse = await getCategories();
   return (
     <div className="py-8 px-4 mx-auto max-w-2xl lg:py-8">
