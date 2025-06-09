@@ -7,7 +7,7 @@ import AddToCart from "./AddToCart";
 
 function ProductCard({ product }) {
   return (
-    <div className="w-full h-max rounded-2xl shadow-blue-600 dark:shadow dark:shadow-amber-50 px-5 py-4 border border-b-amber-950 ">
+    <div className="w-full max-h-120 rounded-2xl shadow-blue-600 dark:shadow dark:shadow-amber-50 px-5 py-4 border border-b-amber-950 ">
       <Link href={`/products/${product.id}`}>
         <div className="flex justify-center">
           <Image
@@ -15,7 +15,7 @@ function ProductCard({ product }) {
             alt="image"
             height={500}
             width={500}
-            className="max-h-40 w-auto"
+            className="max-h-30 w-auto"
           />
         </div>
       </Link>

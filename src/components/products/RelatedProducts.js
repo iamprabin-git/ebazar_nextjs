@@ -33,13 +33,13 @@ const RelatedProducts = ({ category, currentProductId }) => {
         {related.filter((product)=>product.id!== currentProductId)
         .map((product, index) => index < 4 ? (
           <Link href={`/products/${product.id}`} key={index}>
-            <div className="border rounded-lg p-3 hover:bg-gray-100 transition dark:border-gray-700">
+            <div className="border rounded-lg  p-3 hover:bg-gray-100 transition dark:border-gray-700">
               <Image
                 src={product.imageUrls[0]}
                 alt={product.name}
                 width={200}
                 height={150}
-                className="h-20 w-20 rounded-md object-cover mb-2"
+                className="h-20 w-20 rounded-md object-cover items-center justify-center mb-2"
               />
               <p className="text-sm font-medium text-gray-800 dark:text-gray-100 line-clamp-1">
                 {product.name}

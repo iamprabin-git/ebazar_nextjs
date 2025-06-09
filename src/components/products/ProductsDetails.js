@@ -10,6 +10,7 @@ import ProductDescription from "./Description";
 import AddToFavourite from "./AddToFavourite";
 import BackButton from "../BackButton";
 import RelatedProducts from "./RelatedProducts";
+import { PRODUCTS_ROUTE } from "@/constants/routes";
 
 const ProductDetail = ({ product }) => {
   const [mainImage, setMainImage] = useState(product.imageUrls[0]);
@@ -36,7 +37,7 @@ const ProductDetail = ({ product }) => {
                 <button
                   key={index}
                   onClick={() => setMainImage(img)}
-                  className={`border rounded-md overflow-hidden ${
+                  className={`border rounded-md overflow-hidden hover:border-blue-500${
                     img === mainImage ? "border-blue-500" : "border-gray-300"
                   }`}
                 >
@@ -87,7 +88,7 @@ const ProductDetail = ({ product }) => {
             <div className="flex gap-2 mt-2">
               {product?.brand && (
                 <Link
-                  href={``}
+                  href={`${PRODUCTS_ROUTE}?brands=${product?.brand}`}
                   className="text-sm font-medium leading-none rounded-lg py-1 px-3 bg-blue-500 text-gray-900 hover:underline hover:opacity-80 dark:text-white"
                 >
                   {product?.brand}
@@ -95,7 +96,7 @@ const ProductDetail = ({ product }) => {
               )}
               {product?.category && (
                 <Link
-                  href={``}
+                  href={`${PRODUCTS_ROUTE}?category=${product?.category}`}
                   className="text-sm font-medium leading-none rounded-lg py-1 px-3 bg-gray-500 text-gray-900 hover:underline hover:opacity-80 dark:text-white"
                 >
                   {product?.category}
