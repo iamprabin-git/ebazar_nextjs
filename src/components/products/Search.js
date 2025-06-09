@@ -18,7 +18,7 @@ function SearchProduct() {
      if (productName === "") {
        searchProduct();
      }
-    }, [productName]);
+    }, [productName, searchProduct ]);
  
  
   return (

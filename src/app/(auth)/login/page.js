@@ -40,7 +40,7 @@ function Loginpage() {
       toast.error(error, {
         autoClose: 750,
       });
-  }, [user, error]);
+  }, [user, error, router]);
 
   return (
    

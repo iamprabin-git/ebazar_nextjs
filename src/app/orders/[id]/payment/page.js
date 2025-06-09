@@ -28,7 +28,7 @@ function OrderPaymentPage() {
     setTimeout(()=>{
       router.push(ORDERS_ROUTE)
     }, 1500);
-  }, []);
+  }, [params.id, transactionId, status, router]);
 
   return (
     <section className='max-w-screen-xl container mx-auto px-4 py-10'>

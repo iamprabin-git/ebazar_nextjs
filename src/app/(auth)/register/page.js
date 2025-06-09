@@ -59,7 +59,7 @@ function RegisterPage() {
             autoClose: 750,
             onClose: () => dispatch(logoutUser()),
           });
-      }, [user, error, loading]);
+      }, [user, error, loading, router, dispatch]);
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded shadow-md mt-6 dark:bg-gray-800">

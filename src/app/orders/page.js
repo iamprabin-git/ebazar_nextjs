@@ -55,7 +55,7 @@ function OrdersPage() {
       .then((response) => setOrders(response?.data))
       .catch((error) => toast.error(error.response?.data, { autoClose: 750 }))
       .finally(() => setLoading(false));
-  }, [user?.id, searchParams]);
+  }, [user?.id, searchParams, status]);
 
   return (
     <div className="max-w-screen mx-auto container ">
