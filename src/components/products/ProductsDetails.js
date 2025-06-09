@@ -16,7 +16,7 @@ const ProductDetail = ({ product }) => {
 
 
   return (
-    <section className="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased">
+    <section className="py-3 bg-white md:py-16 dark:bg-gray-900 antialiased">
       <BackButton classNameme="mb-4"/>
       <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
@@ -109,7 +109,7 @@ const ProductDetail = ({ product }) => {
              
             </div>
             <hr className="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
-            <RelatedProducts category={product.category} /> 
+            <RelatedProducts category={product.category} currentProductId={product.id} />
           </div>
         </div>
       </div>

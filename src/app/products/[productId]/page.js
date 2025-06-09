@@ -5,9 +5,9 @@ import ProductDetail from "@/components/products/ProductsDetails";
 export default async function ProductByIdPage({ params }) {
   try {
     const response = await getProductById((await params).productId);
-    const product = response.data;
+    const product = response?.data;
 
-    return <ProductDetail product={{id:(await params).productId,...product}} />;
+    return <ProductDetail product={product} />;
   } catch (error) {
     return (
       <div className="p-4 text-red-600">
