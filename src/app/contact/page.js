@@ -1,155 +1,146 @@
 "use client";
 
-import SocialIcons from "@/components/Social";
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaPaperPlane } from 'react-icons/fa';
 
-function ContactPage() {
-  return (
-    <div className="max-w-7xl mx-auto bg-white dark:bg-gray-900 border border-gray-200 p-10">
-      <h1 className="text-3xl font-bold text-center mb-8">
-        Contact Us
-      </h1>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* LEFT: Contact Form */}
-        <form className="space-y-5">
-          <div>
-            <label htmlFor="name" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-              placeholder="Prabin Dangol"
-              required
-            />
-          </div>
+const ContactPage = () => {
+   return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <div className="container mx-auto px-4 py-12 mt-5">
+        <h1 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-12">
+          Contact Us
+        </h1>
 
-          <div>
-            <label htmlFor="address" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
-              Address
-            </label>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-              placeholder="Godawari Municipality-5, Lele, Lalitpur"
-              required
-            />
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Contact Information */}
+          <div className="space-y-8">
+            <div className="bg-white dark:bg-gray-800 py-8 px-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl h-fit">
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6">
+                Get in Touch
+              </h2>
 
-          <div>
-            <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-              placeholder="you@example.com"
-              required
-            />
-          </div>
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full">
+                    <FaMapMarkerAlt className="text-blue-600 dark:text-blue-300 text-xl" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-white">Our Address</h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      Godawari Municipality-5, lele<br />
+                      Lalitpur<br />
+                      Nepal
+                    </p>
+                  </div>
+                </div>
 
-          {/* SUBJECT: Radio buttons */}
-          <div>
-            <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
-              Subject
-            </label>
-            <div className="flex items-center gap-4">
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="subject"
-                  value="sale"
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-                  required
-                />
-                <span className="ml-2 text-sm text-gray-900 dark:text-gray-300">Sale Property</span>
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="subject"
-                  value="rent"
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-                />
-                <span className="ml-2 text-sm text-gray-900 dark:text-gray-300">Rent Property</span>
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="subject"
-                  value="other"
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-                />
-                <span className="ml-2 text-sm text-gray-900 dark:text-gray-300">Other Request</span>
-              </label>
+                <div className="flex items-start space-x-4">
+                  <div className="bg-green-100 dark:bg-green-900 p-3 rounded-full">
+                    <FaPhone className="text-green-600 dark:text-green-300 text-xl" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-white">Phone Number</h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      +977-9765726294
+                      
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="bg-purple-100 dark:bg-purple-900 p-3 rounded-full">
+                    <FaEnvelope className="text-purple-600 dark:text-purple-300 text-xl" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-white">Email Address</h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      dprabin23@gmail.com<br />
+                      
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Google Map Embed */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg overflow-hidden">
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+                Our Location
+              </h3>
+              <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+                
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d424.8175903821144!2d85.33305485701393!3d27.57204344007455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb14212a8436db%3A0x9e0805ab0f1be891!2sLele%2044700!5e1!3m2!1sen!2snp!4v1749521392213!5m2!1sen!2snp"  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  className="rounded-lg"
+                  referrerPolicy="no-referrer-when-downgrade"></iframe>
+              </div>
             </div>
           </div>
 
-          <div>
-            <label htmlFor="enquiry" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
-              Enquiry
-            </label>
-            <textarea
-              id="enquiry"
-              name="enquiry"
-              rows="4"
-              className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-              placeholder="Write your enquiry here..."
-              required
-            ></textarea>
+          {/* Contact Form */}
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl ">
+            <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6">
+              Send Us a Message
+            </h2>
+            
+            <form  className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                 
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                 
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                 
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="flex items-center justify-center w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-300"
+              >
+                <FaPaperPlane className="mr-2" />
+                Send Message
+              </button>
+            </form>
           </div>
-
-          <button
-            type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Submit Enquiry
-          </button>
-        </form>
-
-        {/* RIGHT: Static Contact Details */}
-        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm p-5">
-  <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Contact Information</h2>
-
-  <div className="mb-4 text-gray-700 dark:text-gray-300">
-    <p className="flex items-center gap-2">
-      <FaMapMarkerAlt className="text-red-500" />
-      <span><strong>Office Address:</strong> Godawari Municipality-6, Phaidol, Lalitpur</span>
-    </p>
-  </div>
-
-  <div className="mb-4 text-gray-700 dark:text-gray-300">
-    <p className="flex items-center gap-2">
-      <FaPhoneAlt className="text-green-500" />
-      <span><strong>Phone 1:</strong> +977-9765726294 (Prabin Dangol)</span>
-    </p>
-    <p className="flex items-center gap-2">
-      <FaPhoneAlt className="text-green-500" />
-      <span><strong>Phone 2:</strong> +977-9849150004 (Sujan Bhandari)</span>
-    </p>
-    <p className="flex items-center gap-2">
-      <FaPhoneAlt className="text-green-500" />
-      <span><strong>Phone 3:</strong> +977-9818366209 (Manoj Nagarkoti) </span>
-    </p>
-  </div>
-
-  <div className="text-gray-700 dark:text-gray-300">
-    <p className="flex items-center gap-2">
-      <FaEnvelope className="text-blue-500" />
-      <span><strong>Email:</strong> info.lelesastogharjaggakarobar@gmail.com</span>
-    </p>
-  </div>
-</div>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default ContactPage;
