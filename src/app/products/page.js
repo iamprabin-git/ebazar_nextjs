@@ -19,7 +19,7 @@ async function ProductsPage({ searchParams }) {
 
   return (
     <section className="container mx-auto px-4">
-      <div className=" grid grid-cols-[1fr_auto_auto] items-center gap-3">
+      <div className=" grid grid-cols-2 md:grid-cols-[3fr_1fr_auto] items-center gap-3">
         <h1 className="text-3xl font-bold underline pt-6 justify-between">
           Popular Products
         </h1>
