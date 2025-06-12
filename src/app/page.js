@@ -11,6 +11,7 @@ import 'swiper/css/effect-fade';
 
 import HomepageSlider from '@/components/home/Slider';
 import Partners from '@/components/home/Partners';
+import PopularProducts from '@/components/home/PopularProducts';
 
 const HomePage = () => {
   // Sample data
@@ -97,6 +98,9 @@ const HomePage = () => {
 
       {/* Sponsors Carousel */}
       <Partners />
+
+      {/* popular products */}
+      <PopularProducts />
 
       {/* Categories */}
       <section className="py-12 bg-white">

@@ -47,12 +47,12 @@ function Partners() {
           >
             {sponsors.map((sponsor) => (
               <SwiperSlide key={sponsor.id}>
-                <div className="flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all duration-300">
+                <div className="flex items-center justify-center h-25 grayscale hover:grayscale-0 transition-all duration-300">
                   <Image
                     src={sponsor.logo} 
                     alt={sponsor.name} 
-                    height={100}
-                    width={100}
+                    height={500}
+                    width={500}
                     className="max-h-full max-w-full object-contain"
                   />
                 </div>
