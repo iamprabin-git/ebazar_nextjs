@@ -111,9 +111,11 @@ const HomePage = () => {
             {categories.map((category) => (
               <div key={category.id} className="group cursor-pointer">
                 <div className="relative overflow-hidden rounded-lg aspect-square mb-3">
-                  <img
+                  <Image
                     src={category.image}
                     alt={category.name}
+                    width={500}
+                    height={500}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
