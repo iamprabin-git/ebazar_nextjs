@@ -12,6 +12,7 @@ import 'swiper/css/effect-fade';
 import HomepageSlider from '@/components/home/Slider';
 import Partners from '@/components/home/Partners';
 import PopularProducts from '@/components/home/PopularProducts';
+import Image from 'next/image';
 
 const HomePage = () => {
   // Sample data
@@ -131,9 +132,11 @@ const HomePage = () => {
             {featuredProducts.map((product) => (
               <div key={product.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
                 <div className="relative">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.name}
+                    width={500}
+                    height={500}
                     className="w-full h-64 object-cover"
                   />
                   <button className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100">

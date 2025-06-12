@@ -109,7 +109,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-800 dark:text-white text-sm">
-            © {currentYear} Lele Online store. All rights reserved.
+            &copy; {currentYear} Lele Online store. All rights reserved.
           </p>
           
           <div className="flex space-x-6 mt-4 md:mt-0">
