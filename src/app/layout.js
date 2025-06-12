@@ -6,6 +6,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./globals.css"; // keep your global styles here
 import AppProvider from "@/redux/provider";
 import MainLayout from "@/layouts/MainLayout";
+import Footer from "@/components/Footer";
 
 
 
@@ -26,7 +27,7 @@ export default function RootLayout({ children }) {
           <MainLayout>
             <Header />
             { children }
-           
+           <Footer />
           </MainLayout>
         </AppProvider>
       </body>
