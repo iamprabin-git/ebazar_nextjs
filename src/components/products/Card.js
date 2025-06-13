@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 import Image from "next/image";
 import card from "../../assets/images/product-card.jpg";
 import Link from "next/link";
