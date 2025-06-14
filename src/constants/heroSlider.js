@@ -1,5 +1,5 @@
-import hero1 from "../assets/images/aa.png";
-import hero2 from "../assets/images/bb.png";
+import hero1 from "@/assets/images/aa.png";
+import hero2 from "@/assets/images/bb.png";
 
 const heroSlides = [
     {

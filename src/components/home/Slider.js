@@ -3,7 +3,6 @@
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
-
 import Image from "next/image";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
@@ -11,6 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+
 import heroSlides from "@/constants/heroSlider";
 
 function HomepageSlider() {
@@ -37,10 +37,9 @@ function HomepageSlider() {
               <Image
                 src={slide.image}
                 alt={slide.title}
-                width={1920}
-                height={1080}
-                className="object-cover"
+                fill
                 priority={slide.id === 1}
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center">
                 <div className="container mx-auto px-4 text-white">
@@ -64,9 +63,13 @@ function HomepageSlider() {
         <FiChevronRight size={24} />
       </button>
 
+      {/* Pagination */}
       <div className="custom-pagination absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex gap-2" />
     </section>
   );
 }
 
 export default HomepageSlider;
+
+
+

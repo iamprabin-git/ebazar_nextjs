@@ -5,6 +5,8 @@ import PopularProducts from "@/components/home/PopularProducts";
 import Partners from "@/components/home/Partners";
 import HomepageSlider from "@/components/home/Slider";
 import FeatureSection from "@/components/home/Feature";
+import Call from "@/components/home/Call";
+
 
 const HomePage = () => {
   return (
@@ -15,6 +17,7 @@ const HomePage = () => {
       {/* Popular Products Section */}
       <PopularProducts />
       <Partners />
+      <Call />
     </div>
   );
 };

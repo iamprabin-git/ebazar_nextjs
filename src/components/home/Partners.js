@@ -15,8 +15,8 @@ import Image from 'next/image';
 function Partners() {
       const sponsorsSwiperRef = useRef(null);
   return (
-    <section className="py-8 bg-gray-100">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-4 dark:text-slate-900">Our Sponsers List</h2>
+    <section className="py-8 bg-gray-100 dark:bg-slate-600">
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-4 dark:text-white">Our Sponsers List</h2>
         <div className="container mx-auto px-4">
           <Swiper
             ref={sponsorsSwiperRef}
@@ -47,7 +47,7 @@ function Partners() {
           >
             {sponsors.map((sponsor) => (
               <SwiperSlide key={sponsor.id}>
-                <div className="flex items-center justify-center h-25 grayscale hover:grayscale-0 transition-all duration-300">
+                <div className="flex items-center justify-center h-25 grayscale hover:grayscale-0 transition-all duration-300 dark:grayscale-0">
                   <Image
                     src={sponsor.logo} 
                     alt={sponsor.name} 
