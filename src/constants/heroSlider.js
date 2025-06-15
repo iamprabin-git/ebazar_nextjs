@@ -1,28 +1,28 @@
-import hero1 from "@/assets/images/aa.png";
-import hero2 from "@/assets/images/bb.png";
+import hero1 from "@/assets/images/watch.jpg";
+import hero2 from "@/assets/images/bluetoothSpeaker.jpg";
+import { PRODUCTS_ROUTE } from "./routes";
 
-const heroSlides = [
+const carouselImages = [
     {
       id: 1,
-      title: "Summer Collection 2023",
-      subtitle: "Up to 50% Off",
-      image: hero1,
-      buttonText: "Shop Now",
+      src: hero1,
+      alt: 'Summer Collection',
+      title: 'Summer Collection',
+      description: 'Up to 50% off on selected items',
+      buttonText: 'Shop Now',
+     
     },
     {
       id: 2,
-      title: "New Arrivals",
-      subtitle: "Discover the latest trends",
-      image: hero2,
-      buttonText: "Explore",
+      src: hero2,
+      alt: 'New Arrivals',
+      title: 'New Arrivals',
+      description: 'Discover our latest products',
+      buttonText: 'Explore',
+      
     },
-    {
-      id: 3,
-      title: "Limited Time Offer",
-      subtitle: "Free shipping on orders over $50",
-      image: hero1,
-      buttonText: "Get Deal",
-    },
-  ];
   
-  export default heroSlides;
+  ];
+
+  
+  export default carouselImages;
