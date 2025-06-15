@@ -54,7 +54,7 @@ export default function Slider() {
             index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
           }`}
         >
-          <div className="relative w-full h-200">
+          <div className="relative w-full h-full overflow-hidden">
             <Image
               src={slide.src}
               alt={slide.alt}

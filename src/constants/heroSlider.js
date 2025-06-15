@@ -1,6 +1,6 @@
-import hero1 from "@/assets/images/watch.jpg";
-import hero2 from "@/assets/images/bluetoothSpeaker.jpg";
-import { PRODUCTS_ROUTE } from "./routes";
+import hero1 from "@/assets/images/shoe.png";
+import hero2 from "@/assets/images/jbl.png";
+
 
 const carouselImages = [
     {
